@@ -1,0 +1,81 @@
+<project default="run" basedir="." xmlns:sonar="antlib:org.sonar.ant">
+	 
+	
+   <property name="src.dir"     value="src"/>
+	   <property name="ant.project.name"     value="ATMSim"/>
+   <property name="build.dir"   value="build"/>
+   <property name="classes.dir" value="${build.dir}/classes"/>
+   <property name="jar.dir"     value="${build.dir}/jar"/>
+	
+	<!-- Define the SonarQube global properties (the most usual way is to pass these properties via the command line) -->
+	<property name="sonar.jdbc.url" value="jdbc:mysql://localhost:3306/sonar?useUnicode=true&amp;characterEncoding=utf8" />
+	<property name="sonar.jdbc.username" value="sonar" />
+	<property name="sonar.jdbc.password" value="sonar" />
+	
+	 
+	<!-- Define the SonarQube project properties -->
+	<property name="sonar.projectKey" value="org.codehaus.sonar:example-java-ant" />
+	<property name="sonar.projectName" value="Simple Java Project analyzed with the SonarQube Ant Task" />
+	<property name="sonar.projectVersion" value="1.0" />
+	<property name="sonar.language" value="java" />
+	<property name="sonar.sources" value="${src.dir}" />
+	<property name="sonar.binaries" value="${jar.dir}" />
+	
+
+
+    <property name="main-class"  value="edu.cmu.sei.atm.ui.ATMGUI"/>
+
+	<property name="lib.dir"     value="lib"/>
+
+	    <path id="classpath">
+	        <fileset dir="${lib.dir}" includes="**/*.jar"/>
+	    </path>
+	
+	<copy todir="${classes.dir}/edu/cmu/sei/atm/resources">
+	  <fileset dir="${src.dir}/edu/cmu/sei/atm/resources">
+	    <exclude name="**/*.java"/>
+	  </fileset>
+	</copy>
+	
+    <target name="clean">
+        <delete dir="${build.dir}"/>
+    </target>
+
+	<!-- Define the SonarQube target -->
+		<target name="sonar">
+		    <taskdef uri="antlib:org.sonar.ant" resource="org/sonar/ant/antlib.xml">
+		        <!-- Update the following line, or put the "sonar-ant-task-*.jar" file in your "$HOME/.ant/lib" folder -->
+		        <classpath path="path/to/sonar/ant/task/lib/sonar-ant-task-*.jar" />
+		    </taskdef>
+		 
+		    <!-- Execute Sonar -->
+		    <sonar:sonar />
+		</target>
+	
+    <target name="compile">
+        <mkdir dir="${classes.dir}"/>
+        <javac srcdir="${src.dir}" destdir="${classes.dir}" classpathref="classpath" includeantruntime="false"/>
+    </target>
+
+    <target name="jar" depends="compile">
+        <mkdir dir="${jar.dir}"/>
+        <jar destfile="${jar.dir}/${ant.project.name}.jar" basedir="${classes.dir}">
+            <manifest>
+                <attribute name="Main-Class" value="${main-class}"/>
+            </manifest>
+        </jar>
+    </target>
+
+    <target name="run" depends="jar">
+        <java fork="true" classname="${main-class}">
+            <classpath>
+                <path refid="classpath"/>
+                <path location="${jar.dir}/${ant.project.name}.jar"/>
+            </classpath>
+        	</java>
+        </target>
+
+    <target name="clean-build" depends="clean,jar"/>
+
+    <target name="main" depends="clean,run"/>
+</project>
