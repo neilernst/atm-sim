@@ -8,7 +8,7 @@
    <property name="jar.dir"     value="${build.dir}/jar"/>
 	
 	<!-- Define the SonarQube global properties (the most usual way is to pass these properties via the command line) -->
-	<property name="sonar.jdbc.url" value="jdbc:mysql://localhost:3306/sonar?useUnicode=true&amp;characterEncoding=utf8" />
+	<property name="sonar.jdbc.url" value="jdbc:mysql://localhost:3306/sonarqube?useUnicode=true&amp;characterEncoding=utf8" />
 	<property name="sonar.jdbc.username" value="sonar" />
 	<property name="sonar.jdbc.password" value="sonar" />
 	
@@ -45,7 +45,7 @@
 		<target name="sonar">
 		    <taskdef uri="antlib:org.sonar.ant" resource="org/sonar/ant/antlib.xml">
 		        <!-- Update the following line, or put the "sonar-ant-task-*.jar" file in your "$HOME/.ant/lib" folder -->
-		        <classpath path="path/to/sonar/ant/task/lib/sonar-ant-task-*.jar" />
+		        <classpath path="/usr/local/Cellar/sonar/4.0/libexec/lib/sonar-ant-task-*.jar" />
 		    </taskdef>
 		 
 		    <!-- Execute Sonar -->
