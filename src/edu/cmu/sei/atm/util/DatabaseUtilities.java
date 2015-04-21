@@ -23,7 +23,7 @@ public class DatabaseUtilities {
     ResultSet result;
     String dbName = "credit_card_db",
            userName = "root",// put your mysql user name
-           password = "root";// put your mysql password
+           password = "";// put your mysql password
     Account account;
     double total_Balance, availableBalance;
 
