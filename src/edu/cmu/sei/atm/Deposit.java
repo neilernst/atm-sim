@@ -52,7 +52,6 @@ public class Deposit extends Transaction {
                         + "be available until we verify the amount of any\n"
                         + "enclosed cash and your checks clear.");
                 delay(5000);
-
                 // credit account to reflect the deposit
                 bankDatabase.credit(getAccountNumber(), amount);
             } // end if

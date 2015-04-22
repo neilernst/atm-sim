@@ -2,10 +2,13 @@ package edu.cmu.sei.atm;
 
 import edu.cmu.sei.atm.ui.Screen;
 import edu.cmu.sei.atm.ui.Keypad;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
+   
 // Represents a balance inquiry ATM transaction
 public class BalanceInquiry extends Transaction {
-
+	private static final Logger logger = LogManager.getLogger("HelloWorld");
     private Keypad keypad; // reference to keypad
 
     // BalanceInquiry constructor
@@ -17,6 +20,8 @@ public class BalanceInquiry extends Transaction {
 
     // performs the transaction
     public void execute() {
+        logger.info("This is a test\nlog over two lines");
+
         // get references to bank database and screen
         BankDatabase bankDatabase = getBankDatabase();
         Screen screen = getScreen();

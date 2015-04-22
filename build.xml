@@ -6,6 +6,7 @@
    <property name="build.dir"   value="build"/>
    <property name="classes.dir" value="${build.dir}/classes"/>
    <property name="jar.dir"     value="${build.dir}/jar"/>
+   <property name="lib.dir" value="lib"/>
 
 	<!-- Define the SonarQube global properties (the most usual way is to pass these properties via the command line) -->
 	<property name="sonar.jdbc.url" value="jdbc:mysql://localhost:3306/sonar?useUnicode=true&amp;characterEncoding=utf8" />
@@ -19,9 +20,8 @@
 	<property name="sonar.projectVersion" value="1.0" />
 	<property name="sonar.language" value="java" />
 	<property name="sonar.sources" value="${src.dir}" />
-	<property name="sonar.binaries" value="${jar.dir}" />
-
-
+	<property name="sonar.java.binaries" value="${classes.dir}" />
+    <property name="sonar.java.libraries" value="${lib.dir}" />
 
     <property name="main-class"  value="edu.cmu.sei.atm.ui.ATMGUI"/>
 
