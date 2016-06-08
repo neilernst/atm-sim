@@ -9,11 +9,13 @@
    <property name="lib.dir" value="lib"/>
 
 	<!-- Define the SonarQube global properties (the most usual way is to pass these properties via the command line) -->
-	<property name="sonar.jdbc.url" value="jdbc:mysql://localhost:3306/sonar?useUnicode=true&amp;characterEncoding=utf8" />
+<!-- 	<property name="sonar.jdbc.url" value="jdbc:mysql://localhost:3306/sonar?useUnicode=true&amp;characterEncoding=utf8" />
 	<property name="sonar.jdbc.username" value="sonar" />
-	<property name="sonar.jdbc.password" value="sonar" />
+	<property name="sonar.jdbc.password" value="sonar" /> -->
 
+    <property name="sonar.host.url" value="http://192.168.99.100:9000" />
 
+  <!-- -Dsonar.jdbc.url=jdbc:postgresql://$(boot2docker ip)/sonar -->
 	<!-- Define the SonarQube project properties -->
 	<property name="sonar.projectKey" value="edu.cmu.sei.ap:ATM" />
 	<property name="sonar.projectName" value="ATM project" />

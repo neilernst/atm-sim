@@ -3,7 +3,7 @@ package edu.cmu.sei.atm;
 // Account.java
 // Represents a bank account
 
-public class Account 
+public class Account
 {
    private int accountNumber; // account number
    private int pin; // PIN for authentication
@@ -11,7 +11,7 @@ public class Account
    private double totalBalance; // funds available + pending deposits
 
    // Account constructor initializes attributes
-   public Account( int theAccountNumber, int thePIN, 
+   public Account( int theAccountNumber, int thePIN,
       double theAvailableBalance, double theTotalBalance )
    {
       accountNumber = theAccountNumber;
@@ -28,7 +28,7 @@ public class Account
       else
          return false;
    } // end method validatePIN
-   
+
    // returns available balance
    public double getAvailableBalance()
    {
@@ -57,7 +57,7 @@ public class Account
    // returns account number
    public int getAccountNumber()
    {
-      return accountNumber;  
+      return accountNumber;
    } // end method getAccountNumber
 
       // returns account pin
